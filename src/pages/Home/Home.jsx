@@ -1,8 +1,11 @@
-import Hero from "./Hero"
-import Women from "../../assets/images/category1.png"
-import Men from "../../assets/images/category2.png"
-import PregnantWomen from "../../assets/images/category3.png"
-import Child from "../../assets/images/category4.png"
+import Hero from "./Hero";
+import Women from "../../assets/images/category1.png";
+import Men from "../../assets/images/category2.png";
+import PregnantWomen from "../../assets/images/category3.png";
+import Child from "../../assets/images/category4.png";
+import NewArrials from "./NewArrivals";
+import LatestNews from "./LatestNews";
+import SubscriptionSection from "./Subscription";
 
 const CategoryCard = ({ category }) => {
   return (
@@ -12,28 +15,28 @@ const CategoryCard = ({ category }) => {
         {category.category}
       </div>
     </div>
-  )
-}
+  );
+};
 
 const Home = () => {
   const categories = [
     {
       category: "For Women",
-      image: Women
+      image: Women,
     },
     {
       category: "For Men",
-      image: Men
+      image: Men,
     },
     {
       category: "For Pregnant Women",
-      image: PregnantWomen
+      image: PregnantWomen,
     },
     {
       category: "For Children",
-      image: Child
-    }
-  ]
+      image: Child,
+    },
+  ];
 
   return (
     <>
@@ -42,20 +45,16 @@ const Home = () => {
         <div className="container mx-auto py-36 px-4 lg:px-0">
           <div className="flex flex-wrap justify-between">
             {categories.map((category) => {
-              return <CategoryCard category={category} />
+              return <CategoryCard category={category} />;
             })}
           </div>
         </div>
       </section>
-      <section>
-        <div className="py-10 container mx-auto">
-          <h2 className="text-6xl text-center">New Arrivals</h2>
-          <p className="text-center w-1/2 mx-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec a mi enim. Duis in tortor sit amet turpis rutrum fermentum
-            in non arcu. Praesent porta auctor odio a suscipit. Quisque sagittis suscipit ultricies.</p>
-        </div>
-      </section>
+      <NewArrials />
+      <LatestNews />
+      <SubscriptionSection />
     </>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
