@@ -2,67 +2,28 @@ import DefaultProduct from "../../assets/images/default-product.png";
 import { classNames } from "../../utils/class-names";
 import { StarIcon } from "@heroicons/react/24/outline";
 import { StarIcon as StarFilledIcon } from "@heroicons/react/24/solid";
-import { Fragment } from "react";
+import axios from "axios";
+import { Fragment, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+
+
+
+
 const NewArrials = () => {
-  const products = [
-    {
-      name: "Anti Acne Cream",
-      price: 4.99,
-      rating: 4,
-      total_reviews: 100,
-      featured_image: DefaultProduct,
-    },
-    {
-      name: "Anti Acne Cream",
-      price: 4.99,
-      rating: 5,
-      total_reviews: 100,
-      featured_image: DefaultProduct,
-    },
-    {
-      name: "Anti Acne Cream",
-      price: 4.99,
-      rating: 3,
-      total_reviews: 100,
-      featured_image: DefaultProduct,
-    },
-    {
-      name: "Anti Acne Cream",
-      price: 2.99,
-      rating: 2,
-      total_reviews: 100,
-      featured_image: DefaultProduct,
-    },
-    {
-      name: "Anti Acne Cream",
-      price: 4.99,
-      rating: 2,
-      total_reviews: 100,
-      featured_image: DefaultProduct,
-    },
-    {
-      name: "Anti Acne Cream",
-      price: 4.99,
-      rating: 4,
-      total_reviews: 100,
-      featured_image: DefaultProduct,
-    },
-    {
-      name: "Anti Acne Cream",
-      price: 4.99,
-      rating: 4,
-      total_reviews: 100,
-      featured_image: DefaultProduct,
-    },
-    {
-      name: "Anti Acne Cream",
-      price: 4.99,
-      rating: 4,
-      total_reviews: 100,
-      featured_image: DefaultProduct,
-    },
-  ];
+  const [data, setData] = useState()
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/api/v1/home").then((response) => {
+      return (
+        response.data
+      );
+    }).then((data) => {
+      setData(data.data)
+    });
+
+  }, []);
+
+  const products = data ? data.new_arrivals : [];
 
   return (
     <section>
@@ -79,7 +40,7 @@ const NewArrials = () => {
           {products.map((product, idx) => (
             <div key={idx} className={classNames("flex-1 min-w-[274px]")}>
               <img
-                src={product.featured_image}
+                src={product.image}
                 alt="product"
                 className="w-full object-cover object-center h-64"
               />
