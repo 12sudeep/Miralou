@@ -1,4 +1,6 @@
+import { Link, Route, Routes } from "react-router-dom";
 import HeroImage from "../../assets/images/hero.png";
+import Prodcuts from "../Products/Products";
 
 const Hero = () => {
   return (
@@ -12,7 +14,10 @@ const Hero = () => {
             At miralou we have turned traditional skin care ingredients lists on
             its head
           </p>
-          <button className="mt-12 bg-yellow-300 px-20 py-3">Buy Now</button>
+          <Link to="/Products" ><button className="mt-12 bg-yellow-300 px-20 py-3">Buy Now</button></Link>
+          <Routes>
+            <Route path="/Products" element={<Prodcuts />} />
+          </Routes>
         </div>
         <img
           src={HeroImage}

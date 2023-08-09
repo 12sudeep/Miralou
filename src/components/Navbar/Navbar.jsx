@@ -17,7 +17,7 @@ const Navbar = () => {
     },
     {
       label: "Product",
-      to: "/product",
+      to: "/products",
     },
     {
       label: "Blog",
