@@ -1,29 +1,13 @@
-import DefaultProduct from "../../assets/images/default-product.png";
 import { classNames } from "../../utils/class-names";
 import { StarIcon } from "@heroicons/react/24/outline";
 import { StarIcon as StarFilledIcon } from "@heroicons/react/24/solid";
-import axios from "axios";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 
 
 
 
-const NewArrials = () => {
-  const [data, setData] = useState()
-
-  useEffect(() => {
-    axios.get("http://localhost:3001/api/v1/home").then((response) => {
-      return (
-        response.data
-      );
-    }).then((data) => {
-      setData(data.data)
-    });
-
-  }, []);
-
-  const products = data ? data.new_arrivals : [];
+const NewArrials = ({ products }) => {
 
   return (
     <section>

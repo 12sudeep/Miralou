@@ -1,14 +1,9 @@
 import Hero from "./Hero";
-import Women from "../../assets/images/category1.png";
-import Men from "../../assets/images/category2.png";
-import PregnantWomen from "../../assets/images/category3.png";
-import Child from "../../assets/images/category4.png";
 import NewArrials from "./NewArrivals";
 import LatestNews from "./LatestNews";
 import SubscriptionSection from "./Subscription";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { setDate } from "date-fns";
 
 const CategoryCard = ({ category }) => {
   return (
@@ -22,7 +17,7 @@ const CategoryCard = ({ category }) => {
 };
 
 const Home = () => {
-const[data,setData] = useState()
+  const [data, setData] = useState()
 
   useEffect(() => {
     axios.get("http://localhost:3001/api/v1/home").then((response) => {
@@ -35,9 +30,10 @@ const[data,setData] = useState()
 
   }, []);
 
-console.log(data)
+  console.log(data)
 
   const categories = data ? data.categories : [];
+  const products = data ? data.new_arrivals : [];
 
   return (
     <>
@@ -51,7 +47,7 @@ console.log(data)
           </div>
         </div>
       </section>
-      <NewArrials />
+      <NewArrials products={products} />
       <LatestNews />
       <SubscriptionSection />
     </>
